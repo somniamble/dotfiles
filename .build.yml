@@ -1,6 +1,10 @@
+image: alpine/edge
+secrets:
+  - a9fd4315-9f42-42d3-b747-3bdfca113eec
+sources:
   - git+ssh://git@git.sr.ht/~rosin/dotfiles
 tasks:
-  - mirror-dotfiles-to-github: |
+  - mirror-dotfiles-to-github:
       cd ~/dotfiles
       ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
       git remote add github git@github.com:somniamble/dotfiles.git
