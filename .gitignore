@@ -1,0 +1,16 @@
+vim/.vim/plugged/
+
+vim/.vim/backup/
+vim/.vim/swap/
+vim/.vim/undo/
+vim/.vim/netrw/
+
+zsh/.zplugin/bin
+
+emacs/.emacs.d/*
+!emacs/.emacs.d/configuration
+!emacs/.emacs.d/init.el
+
+zsh/.zplugin
+
+config/nvim/plugin/packer_compiled.lua
