@@ -1,0 +1,7 @@
+  - git+ssh://git@git.sr.ht/~rosin/dotfiles
+tasks:
+  - mirror-dotfiles-to-github: |
+      cd ~/dotfiles
+      ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+      git remote add github git@github.com:somniamble/dotfiles.git
+      git push --mirror github
