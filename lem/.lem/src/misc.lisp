@@ -1,4 +1,5 @@
 
+(in-package :lem-user)
 ; do we have a repl?
 ; (rosin/focus-internal-repl)
 ; (lem/prompt-window:current-prompt-window)
@@ -72,18 +73,18 @@
 
 ; so I can call this, and cache ?
 ;(buffer-filename)
-(defvar *harpooned* '() "A list of harpooned files")
-
-(define-command rosin/harpoon-current-file () ()
-  (let ((harpooned (config :harpooned nil))
-        (current (buffer-filename)))
-    (format t "Adding ~a to ~a" current harpooned)
-    (setf (config :harpooned) (adjoin current harpooned :test #'string-equal))))
-
-(define-command rosin/go-to-harpooned () ()
-  (let ((harpooned (config :harpooned nil)))
-    ; todo :^)
-    ))
+; (defvar *harpooned* '() "A list of harpooned files")
+; 
+; (define-command rosin/harpoon-current-file () ()
+;   (let ((harpooned (config :harpooned nil))
+;         (current (buffer-filename)))
+;     (format t "Adding ~a to ~a" current harpooned)
+;     (setf (config :harpooned) (adjoin current harpooned :test #'string-equal))))
+; 
+; (define-command rosin/go-to-harpooned () ()
+;   (let ((harpooned (config :harpooned nil)))
+;     ; todo :^)
+;     ))
 
 ; how do I get the current file?
 

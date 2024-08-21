@@ -6,6 +6,7 @@
 (define-key lem-vi-mode:*normal-keymap* "Leader p f" 'lem-core/commands/project:project-find-file)
 (define-key lem-vi-mode:*normal-keymap* "Leader f f" 'find-file-recursively)
 (define-key lem-vi-mode:*normal-keymap* "Leader f Space" 'lem/grep::grep)
+(define-key lem-vi-mode:*normal-keymap* "Leader e x" 'lem-lisp-mode/eval::lisp-eval-last-expression-and-insert)
 (define-keys lem-vi-mode:*visual-keymap*
   ("<" 'lem-core/commands/edit:delete-indentation))
 (define-keys lem-vi-mode:*normal-keymap*
@@ -17,6 +18,7 @@
   ("Leader m i" 'rosin/open-init)
   ("Leader m l" 'rosin/open-lem-source)
   ("Leader m r" 'rosin/focus-internal-repl)
+  ("Leader l f" 'format-current-buffer)
   ("g d" 'lem/language-mode:find-definitions)
   ("g r" 'lem/language-mode:find-references)
   ("g t" 'lem/frame-multiplexer:frame-multiplexer-next)

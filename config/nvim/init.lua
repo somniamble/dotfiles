@@ -45,4 +45,5 @@ spec "user.pomodoro"
 -- ones that I have personally vetted and understand:
 spec "user.leap"
 spec "user.trouble"
+spec "user.marks"
 require "user.lazy"

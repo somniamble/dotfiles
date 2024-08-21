@@ -1,7 +1,7 @@
 export SBCL_HOME=/usr/lib/sbcl
 
 #-quicklisp
-(let ((quicklisp-init (merge-pathnames ".roswell/lisp/quicklisp/setup.lisp"
+(let ((quicklisp-init (merge-pathnames "quicklisp/setup.lisp"
                                        (user-homedir-pathname))))
   (when (probe-file quicklisp-init)
     (load quicklisp-init)))
@@ -20,3 +20,6 @@ export SBCL_HOME=/usr/lib/sbcl
     
 (when (shell-interactive-p *shell*)
   (micros:create-server :port 11111 :dont-close t))
+  
+; aliases
+alias az "export PYENV_VERSION=3.11.6 ^ az"

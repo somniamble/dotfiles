@@ -202,6 +202,8 @@ find-and-replace() {
   ag -l "$SEARCH" | xargs -I FILE sed -i "s/${SEARCH}/${REPLACE}/g" FILE
 }
 
+## azure stuff
+
 # audio-rm() {
 #  # takes an input video, and strips out all audio streams
 #  # ffmpeg -i input_file.mp4 -vcodec copy -an output_file.mp4

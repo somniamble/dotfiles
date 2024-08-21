@@ -1,3 +1,4 @@
 include "%L"
 
 <Multi_key> <:> <o> : "ö"
+<Multi_key> <:> <u> : "ü"

@@ -3,4 +3,5 @@
   :components ((:module "src"
                 :components ((:file "config")
                              (:file "misc")
+                             (:file "lisp-mode")
                              (:file "keybinds")))))
