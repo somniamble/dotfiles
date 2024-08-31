@@ -8,7 +8,7 @@ return {
 
   cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid)},
 
-  -- Specifies whether 'using' directives should be grouped and sorted during
+ -- Specifies whether 'using' directives should be grouped and sorted during
   -- document formatting.
   organize_imports_on_format = true,
   settings = {

@@ -36,7 +36,7 @@ alias monolith-degoog='monolith -I -B -d .googleusercontent.com -d googleanalyti
 alias jsonpprint='python3 -m json.tool'
 
 alias localalias='cat ~/.localaliases '
-alias today='vim $(date +%y-%m-%d).txt'
+alias today='nvim $(date +%y-%m-%d).txt'
 alias lsports='sudo lsof -i -P -n | grep LISTEN'
 
 # generates a QR code from keyboard text and displays it with feh
@@ -212,3 +212,25 @@ find-and-replace() {
 # video-concat() {
 #   # ffmpeg -f concat -i mylist.txt -c copy output.mkv
 # }
+
+blog() {
+  # TODO
+  # make this write to a particular page, rather than a dated entry?
+  directory="$HOME/projects/disast.rs/html/src/dated"
+  filename="${directory}/$(date '+%Y-%m-%d').html"
+  TEXT="$@"
+  if [ -z "$TEXT" ]; then
+    echo "${filename}:"
+    cat $filename
+  else
+    
+    OUTPUT="<p>$TEXT</p>"
+    echo "$OUTPUT" >> "$filename"
+    echo "wrote '$OUTPUT' to $filename"
+  fi
+
+}
+
+blog-edit() {
+  nvim "$HOME/projects/disast.rs/html/src"
+}

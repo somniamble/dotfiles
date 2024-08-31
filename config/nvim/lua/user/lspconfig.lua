@@ -100,6 +100,7 @@ function M.config()
     "marksman",
     "gopls",
     "rust_analyzer",
+    "powershell_es"
   }
 
   local default_diagnostic_config = {
