@@ -4,11 +4,15 @@ function spec(item)
   table.insert(LAZY_PLUGIN_SPEC, { import = item })
 end
 
+
 require "user.launch"
 require "user.options"
 require "user.keymaps"
 require "user.autocmds"
-spec "user.colorscheme"
+
+spec "user.sexp"
+-- this one first
+spec "user.nvlime"
 spec "user.devicons"
 spec "user.treesitter"
 spec "user.mason"
@@ -27,7 +31,7 @@ spec "user.lualine"
 spec "user.navic"
 -- spec "user.breadcrumbs"
 spec "user.harpoon"
-spec "user.neotest"
+-- spec "user.neotest"
 spec "user.autopairs"
 spec "user.neogit"
 spec "user.alpha"
@@ -38,7 +42,7 @@ spec "user.toggleterm"
 -- spec "user.copilot"
 -- spec "user.extras.copilot"
 spec "user.extras.cellular-automaton"
-spec "user.nvim-dap"
+-- spec "user.nvim-dap"
 spec "user.obsidian"
 spec "user.pomodoro"
 
@@ -46,4 +50,11 @@ spec "user.pomodoro"
 spec "user.leap"
 spec "user.trouble"
 spec "user.marks"
+<<<<<<< Updated upstream
 require "user.lazy"
+=======
+
+spec "user.colorscheme"
+spec "user.fennel"
+require "config.lazy"
+>>>>>>> Stashed changes

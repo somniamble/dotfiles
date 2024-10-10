@@ -56,6 +56,18 @@ function M.config()
 
   local icons = require "user.icons"
 
+  -- nvlime
+  cmp.setup.filetype({'lisp'}, {
+    sources = {
+      { name = 'nvlime' },
+      { name = "luasnip" },
+    -- { name = "cmp_tabnine" },
+      { name = "buffer" },
+      { name = "path" },
+      { name = "calc" },
+    }
+  })
+
   cmp.setup {
     snippet = {
       expand = function(args)
@@ -134,12 +146,11 @@ function M.config()
         return vim_item
       end,
     },
-
     sources = {
       -- { name = "copilot" },
       { name = "nvim_lsp" },
       { name = "luasnip" },
-      { name = "cmp_tabnine" },
+      -- { name = "cmp_tabnine" },
       { name = "nvim_lua" },
       { name = "buffer" },
       { name = "path" },
