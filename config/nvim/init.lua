@@ -50,11 +50,6 @@ spec "user.pomodoro"
 spec "user.leap"
 spec "user.trouble"
 spec "user.marks"
-<<<<<<< Updated upstream
-require "user.lazy"
-=======
-
 spec "user.colorscheme"
 spec "user.fennel"
 require "config.lazy"
->>>>>>> Stashed changes
