@@ -11,6 +11,7 @@ function M.config()
     "lua_ls",
     "yamlls",
     "helm_ls",
+    "azure_pipelines_ls",
     "cssls",
     "html",
     "ts_ls",
@@ -20,7 +21,9 @@ function M.config()
     "omnisharp",
     "marksman",
     "gopls",
-    "rust_analyzer"
+    "rust_analyzer",
+    "tflint",
+    "terraformls"
   }
 
   require("mason").setup {

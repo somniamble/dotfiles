@@ -13,12 +13,29 @@ alias gita='gits ; git add'
 alias gitm='gits ; git commit -m'
 alias gitr='gits ; git rebase -i master'
 
+function giddy() {
+  new_branch="$1"
+  echo -e "\033[0;32m:: stash ::\033[0m"
+  git stash 
+  echo -e "\033[0;32m:: checkout master and pull ::\033[0m"
+  git checkout master 
+  git pull 
+  echo -e "\033[0;32m:: stash pop ::\033[0m" 
+  git stash pop
+  if [ ! -z "$new_branch" ]; then
+    echo -e "\033[0;32m:: checkout new branch '$new_branch' ::\033[0m" 
+    git checkout -b "$new_branch"
+  fi
+}
+
 alias rsh='racket -l rash/repl --'
 alias tlist='tmux list-sessions'
 alias tatch='tmux attach -t'
 alias envy='source env/bin/activate'
 alias datestamp='date "+%Y-%m-%d"'
 alias datetimestamp='date "+%Y-%m-%d-%H:%M:%S"'
+
+alias sbcl_with_nvlime='sbcl --load $HOME/common-lisp/nvlime/lisp/start-nvlime.lisp'
 
 alias transfer='rsync -a --relative --human-readable --progress'
 
@@ -176,7 +193,9 @@ get-pod-logs() {
 # careful with your secrets lol lmao
 feed-env() {
   envfile="$1"
-  [[ ! -f "$envfile" ]] && printf "invalid file" && return 1
+  [[ -z "$envfile" ]] && envfile=".env"
+  [[ ! -f "$envfile" ]] && printf "invalid file $envfile" && return 1
+  echo "using envfile $envfile"
 
   # echo $(grep -v '^#' "$envfile" | xargs)
   export $(grep -v '^#' "$envfile" | xargs)
@@ -213,24 +232,60 @@ find-and-replace() {
 #   # ffmpeg -f concat -i mylist.txt -c copy output.mkv
 # }
 
-blog() {
-  # TODO
-  # make this write to a particular page, rather than a dated entry?
-  directory="$HOME/projects/disast.rs/html/src/dated"
-  filename="${directory}/$(date '+%Y-%m-%d').html"
-  TEXT="$@"
-  if [ -z "$TEXT" ]; then
-    echo "${filename}:"
-    cat $filename
-  else
+thelog() {
+  logs_dir="$HOME/projects/disast.rs/html/src/log"
+  current="$(ls -1 $logs_dir | head -n 1)"
+  nvim "$logs_dir/$current"
+}
+
+# blog() {
+#   # TODO
+#   # make this write to a particular page, rather than a dated entry?
+#   directory="$HOME/projects/disast.rs/html/src/dated"
+#   filename="${directory}/$(date '+%Y-%m-%d').html"
+#   TEXT="$@"
+
+#   if [ -z "$TEXT" ]; then
+#     echo "${filename}:"
+#     cat $filename
+#   else
     
-    OUTPUT="<p>$TEXT</p>"
-    echo "$OUTPUT" >> "$filename"
-    echo "wrote '$OUTPUT' to $filename"
-  fi
+#     OUTPUT="<p>$TEXT</p>"
+#     echo "$OUTPUT" >> "$filename"
+#     echo "wrote '$OUTPUT' to $filename"
+#   fi
+# }
 
+# page() {
+#   # TODO
+#   # make this write to a particular page, rather than a dated entry?
+#   directory="$HOME/projects/disast.rs/html/src"
+
+#   this_page="$1"
+#   filename="${directory}/${this_page}.html"
+#   TEXT="$2"
+#   if [ -z "$TEXT" ]; then
+#     echo "${filename}:"
+#     cat $filename
+#     return;
+#   fi
+
+#   if [ -f "$filename" ]; then
+#     OUTPUT="<p>$TEXT</p>"
+#     echo "$OUTPUT" >> "$filename"
+#     echo "wrote '$OUTPUT' to $filename"
+#   else 
+#     OUTPUT="<h1>$TEXT</h1>"
+#     echo "$OUTPUT" >> "$filename"
+#     echo "wrote '$OUTPUT' to $filename"
+#   fi
+# }
+
+tofu-plan-json (){
+  tmpfile=$(mktemp --suffix=.tfplan)
+  tofu plan -out $tmpfile > /dev/null
+  echo "generated plan at $tmpfile"
+  tofu show -json $tmpfile | jq > plan.json
+  echo "wrote plan to plan.json"
 }
 
-blog-edit() {
-  nvim "$HOME/projects/disast.rs/html/src"
-}

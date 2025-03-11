@@ -60,7 +60,7 @@ set $right l
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec $TERMINAL
+bindsym $mod+Return exec "$TERMINAL -e /bin/sh -c 'tmux list-session && tmux a || tmux'"
 
 # kill focused window
 bindsym $mod+Shift+q kill

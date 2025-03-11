@@ -87,7 +87,7 @@ function M.config()
     "lua_ls",
     "cssls",
     "helm_ls",
-    -- "azure_pipelines_ls",
+    "azure_pipelines_ls",
     "html",
     "ts_ls",
     "eslint",
@@ -99,7 +99,9 @@ function M.config()
     "marksman",
     "gopls",
     "rust_analyzer",
-    "powershell_es"
+    "powershell_es",
+    "tflint",
+    "terraformls"
   }
 
   local default_diagnostic_config = {

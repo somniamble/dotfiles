@@ -1,8 +1,3 @@
-# enable_experimental_conpty_backend = false
-live_config_reload = true
-# "window.dynamic_title" = true
-# "window.opacity" = 1.0
-working_directory = "None"
 
 [bell]
 animation = "EaseOutExpo"
@@ -64,17 +59,27 @@ render_timer = false
 # style = "Regular"
 
 [font]
-size = 12
+size = 10
 
 [font.bold]
 # family = "Hack"
+# family = "ProFont IIx Nerd Font"
 family = "Hack Nerd Font"
+# family = "Fixedsys Excelsior"
 # family = "Iosevka Nerd Font"
-style = "Regular"
+style = "Heavy"
+
+# [font.normal]
+# # requires  nerdfonts
+# family = "Hack Nerd Font"
+# # family = "Iosevka Nerd Font"
+# style = "Regular"
 
 [font.normal]
 # requires  nerdfonts
+# family = "Fixedsys Excelsior"
 family = "Hack Nerd Font"
+# family = "ProFont IIx Nerd Font"
 # family = "Iosevka Nerd Font"
 style = "Regular"
 
@@ -651,3 +656,10 @@ lines = 0
 [window.padding]
 x = 0
 y = 0
+
+[general]
+# enable_experimental_conpty_backend = false
+live_config_reload = true
+# "window.dynamic_title" = true
+# "window.opacity" = 1.0
+working_directory = "None"
