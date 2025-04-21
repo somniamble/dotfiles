@@ -54,6 +54,8 @@ spec "user.fennel"
 -- spec "user.telescope-media"
 -- spec "user.markdown-preview"
 spec "user.glow"
+-- this has to go AFTER telescope setup
+spec "user.attempt"
 require "config.lazy"
 -- require "utils.sudowrite"
 require "config.commands"

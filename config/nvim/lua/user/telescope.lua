@@ -34,6 +34,7 @@ function M.config()
     ["<leader>fl"] = { "<cmd>Telescope resume<cr>", "Last Search" },
     ["<leader>fm"] = { "<cmd>Telescope keymaps<cr>", "Keymaps"},
     ["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
+    ["<leader>fa"] = { "<cmd>Telescope attempt<cr>", "Attempts" },
     -- ["<leader>fgb"] = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     -- ["<leader>fsa"] = { "<cmd>Telescope lsp_code_actions<cr>", "Code Actions"},
     ["<leader>fsq"] = { "<cmd>Telescope quickfix theme=ivy<cr>", "Quickfix" },

@@ -49,7 +49,5 @@ ffmpeg -framerate 50 -f x11grab  -ss 10 -s ${width}x${height} -i ${DISPLAY}+$x,$
     -loop 0 $filename
 
 
-
-
 # display message to user
 echo "Recording stopped."

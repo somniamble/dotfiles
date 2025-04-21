@@ -1,34 +1,26 @@
 local M = {
   "hrsh7th/nvim-cmp",
-  event = "InsertEnter",
   dependencies = {
     {
       "hrsh7th/cmp-nvim-lsp",
-      event = "InsertEnter",
     },
     {
       "hrsh7th/cmp-emoji",
-      event = "InsertEnter",
     },
     {
       "hrsh7th/cmp-buffer",
-      event = "InsertEnter",
     },
     {
       "hrsh7th/cmp-path",
-      event = "InsertEnter",
     },
     {
       "hrsh7th/cmp-cmdline",
-      event = "InsertEnter",
     },
     {
       "saadparwaiz1/cmp_luasnip",
-      event = "InsertEnter",
     },
     {
       "L3MON4D3/LuaSnip",
-      event = "InsertEnter",
       dependencies = {
         "rafamadriz/friendly-snippets",
       },
@@ -45,8 +37,8 @@ function M.config()
   require("luasnip/loaders/from_snipmate").lazy_load()
   require("luasnip/loaders/from_vscode").lazy_load()
 
-  vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
-  vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
+  -- vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+  -- vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
   vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
 
   local check_backspace = function()
@@ -61,7 +53,6 @@ function M.config()
     sources = {
       { name = 'nvlime' },
       { name = "luasnip" },
-    -- { name = "cmp_tabnine" },
       { name = "buffer" },
       { name = "path" },
       { name = "calc" },
@@ -171,7 +162,7 @@ function M.config()
       },
     },
     experimental = {
-      ghost_text = false,
+      ghost_text = flatten_lsp_locations,
     },
   }
 end

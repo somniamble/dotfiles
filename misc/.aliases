@@ -4,6 +4,7 @@ SHELLRC="$HOME/.zshrc"
 BROWSER="firefox"
 
 alias feh_browse='feh -g 640x480 -d -S filename'
+alias bfg='java -jar ~/.local/bin/bfg.jar'
 
 alias datestamp='date +%y-%m-%d'
 alias ls='/usr/bin/ls --color=auto'
@@ -12,6 +13,81 @@ alias gits='git status'
 alias gita='gits ; git add'
 alias gitm='gits ; git commit -m'
 alias gitr='gits ; git rebase -i master'
+alias bkt1h='bkt --ttl=60m'
+alias bkt1m='bkt --ttl=1m'
+
+function jumpk8s() {
+  # a busybox pod named "jump" that lives for 1 hour
+    local namespace="dev"
+    local spec='{"apiVersion":"v1","kind":"Pod","metadata":{"name":"jump"},"spec":{"containers":[{"name":"busybox","image":"progrium/busybox","command":["sleep","3600"]}]}}'
+    if [ -n "$1" ]; then
+      namespace="$1"
+    fi
+    which kubectl >/dev/null || return 1
+    which gum >/dev/null || return 1
+
+    # print diagnostic stuff
+    echo "using namespace $namespace for context $(kubectl config current-context)"
+    which yq >/dev/null && printf $spec | yq -y
+
+    echo "printf $spec | kubectl apply -n $namespace -f -"
+    printf $spec | kubectl apply -n $namespace -f -
+
+    # wait for pod to be ready
+    gum spin --spinner moon --title "Waiting for pod" \
+      -- kubectl wait --for=condition=Ready pod/jump -n dev
+
+    # get shell into pod
+    kubectl exec -i -t -n "$namespace" jump -- sh -c "clear; (bash || ash || sh)"
+
+    # clean up pod
+    gum confirm "delete pod ${namespace}/jump?" && \
+      gum spin --spinner moon --title "Killing $namespace/jump..." \
+      -- kubectl delete pod -n "$namespace" jump
+}
+
+function k8snmapper() {
+  # a pod named "nmapper" that lives for 1 hour
+    local namespace="dev"
+    local podname="nmapper"
+    local spec='{"apiVersion":"v1","kind":"Pod","metadata":{"name":"nmapper"},"spec":{"containers":[{"name":"nmapper","image":"instrumentisto/nmap","command":["sleep","3600"]}]}}'
+
+    if [ -n "$1" ]; then
+      namespace="$1"
+    fi
+
+    which gum >/dev/null || return 1
+    which kubectl >/dev/null || return 1
+    echo "using namespace $namespace for context $(kubectl config current-context)"
+    which yq >/dev/null && printf $spec | yq -y
+    echo "printf $spec | kubectl apply -n $namespace -f -"
+    printf $spec | kubectl apply -n $namespace -f -
+    echo "sleeping for 10 seconds to let pod come up..."
+    gum spin --spinner moon --title "Waiting for pod" -- kubectl wait --for=condition=Ready pod/jump -n dev
+    kubectl exec -i -t -n "$namespace" "$podname" -- sh -c "clear; (bash || ash || sh)"
+
+    gum confirm "delete pod ${namespace}/${podname}?" && \
+      gum spin --spinner monkey --title "Killing $namespace/jump..." -- \
+      kubectl delete pod -n "$namespace" $podname
+}
+
+function goto() {
+  if [ -z "$1" ]; then
+    echo "usage: goto <filename_substring>"
+    return 1;
+  fi
+  local pattern=$(printf '*%s*' $1)
+  echo "finding $pattern"
+  local filename=$(find -iname "$pattern")
+  if [ -z "$filename" ]; then
+    echo "no file resembling $pattern in dirtree"
+    return 1;
+  else
+    local directory="$(dirname $filename)"
+    echo "found $filename; going to $directory"
+    cd $directory
+  fi
+}
 
 function giddy() {
   new_branch="$1"
@@ -150,13 +226,6 @@ git-open-azure(){
    $BROWSER "$https_url" 
 }
 
-az-idea() {
-  ssh_url="$(git remote get-url origin)"
-  this_repo=$(az repos list | jq ".[] | select( .sshUrl == \"$ssh_url\" )")
-  echo "Web Url: $(echo $this_repo | jq -r .webUrl)"
-  printf "$this_repo"
-}
-
 get-first-pod() {
   name="$1"
   [[ -z "$2" ]] && namespace="dev" || namespace="$2"
@@ -280,12 +349,3 @@ thelog() {
 #     echo "wrote '$OUTPUT' to $filename"
 #   fi
 # }
-
-tofu-plan-json (){
-  tmpfile=$(mktemp --suffix=.tfplan)
-  tofu plan -out $tmpfile > /dev/null
-  echo "generated plan at $tmpfile"
-  tofu show -json $tmpfile | jq > plan.json
-  echo "wrote plan to plan.json"
-}
-

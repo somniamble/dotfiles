@@ -15,14 +15,7 @@ function M.config()
     l = { name = "LSP" },
     p = { name = "Plugins" },
     t = { name = "Test" },
-    a = {
-      name = "Tab",
-      n = { "<cmd>$tabnew<cr>", "New Empty Tab" },
-      N = { "<cmd>tabnew %<cr>", "New Tab" },
-      o = { "<cmd>tabonly<cr>", "Only" },
-      h = { "<cmd>-tabmove<cr>", "Move Left" },
-      l = { "<cmd>+tabmove<cr>", "Move Right" },
-    },
+    a = { name = "Attempts" },
     T = { name = "Treesitter" },
   }
 
@@ -65,6 +58,11 @@ function M.config()
   }
 
   which_key.register(mappings, opts)
+
+  -- which_key.add({
+  --   {"r", '"xy:r!@x<CR>'},
+  --   {"e", '"xy:@x<CR>'}
+  -- }, { mode = "v", prefix = "<leader>"})
 end
 
 return M

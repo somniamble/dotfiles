@@ -14,3 +14,5 @@ emacs/.emacs.d/*
 zsh/.zplugin
 
 config/nvim/plugin/packer_compiled.lua
+
+*.mp4

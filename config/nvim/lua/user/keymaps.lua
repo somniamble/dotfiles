@@ -30,6 +30,12 @@ keymap("n", "g#", "g#zz", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
+-- echo foo bar
+-- foo bar
+-- vmap <space> "xy:@x<CR>
+-- too powerful
+-- keymap("v", "<space>", "execute 'r !eval '.shellescape(@\", 1)")
+
 keymap("x", "p", [["_dP]])
 
 vim.cmd [[:amenu 10.100 mousemenu.Goto\ Definition <cmd>lua vim.lsp.buf.definition()<CR>]]

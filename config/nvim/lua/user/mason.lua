@@ -8,6 +8,7 @@ local M = {
 
 function M.config()
   local servers = {
+    "clangd",
     "lua_ls",
     "yamlls",
     "helm_ls",
