@@ -13,7 +13,7 @@ stowcmd scripts
 echo
 stowcmd tmux
 echo
-stowcmd vim
+# stowcmd vim
 echo
 stowcmd zsh
 echo
@@ -25,12 +25,12 @@ stowcmd lem
 echo
 stow -t "$HOME/.config" --verbose=2 config
 
-mkdir -pv vim/.vim/backup
-mkdir -pv vim/.vim/undo
-mkdir -pv vim/.vim/swap
-mkdir -pv vim/.vim/netrw
-
-vim +PlugInstall +qall!
+# mkdir -pv vim/.vim/backup
+# mkdir -pv vim/.vim/undo
+# mkdir -pv vim/.vim/swap
+# mkdir -pv vim/.vim/netrw
+# 
+# vim +PlugInstall +qall!
 
 # ZPLUGIN="$HOME/dotfiles/zsh/.zplugin/bin"
 # if [ ! -d "$ZPLUGIN" ]; then

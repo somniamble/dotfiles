@@ -1,2 +1,0 @@
-#! /bin/sh
-/mnt/c/ProgramData/chocolatey/bin/minikube.exe $@ | tee
