@@ -1,0 +1,13 @@
+[start]
+visual-home = "cgi-bin:chabookmark?action=view"
+
+[buffer]
+images = true
+
+[display]
+image-mode = "kitty"
+
+[[siteconf]]
+url = 'https://merveilles\.town/.*'
+cookie = "save"
+scription = "app"
