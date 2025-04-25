@@ -72,3 +72,8 @@ zinit ice atclone"dircolors -b LS_COLORS > clrs.zsh" \
     atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
 zinit light trapd00r/LS_COLORS
 # source /usr/share/nvm/init-nvm.sh
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
+eval "$(mise activate zsh)"

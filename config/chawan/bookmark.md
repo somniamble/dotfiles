@@ -20,3 +20,11 @@ a.heading { display: none }
 * [Predefined variables | Microsoft Learn](https://learn.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops)
 * [Parameters and templateContext | Microsoft Learn](https://learn.microsoft.com/en-us/azure/devops/pipelines/process/template-parameters?view=azure-devops)
 
+
+## kitty
+
+* [Overview - kitty](https://sw.kovidgoyal.net/kitty/overview/)
+
+## forth
+
+* [Starting FORTH - FORTH, Inc](https://www.forth.com/starting-forth/)
