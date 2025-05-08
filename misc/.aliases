@@ -308,6 +308,21 @@ thelog() {
   nvim "$logs_dir/$current"
 }
 
+function git-tidy-branches() {
+    git checkout master \
+      && git fetch -p \
+      && git remote prune origin \
+      && git branch -vv \
+      | grep ': gone]' \
+      | grep -v '\*' \
+      | awk '{ print $1 }' \
+      | xargs -I{} git branch -D {}
+
+    echo "[ :: remaining branches :: ]"
+
+    git branch
+}
+
 # blog() {
 #   # TODO
 #   # make this write to a particular page, rather than a dated entry?

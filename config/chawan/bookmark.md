@@ -52,3 +52,7 @@ a.heading { display: none }
 ## rice
 
 * [picom - ArchWiki](https://wiki.archlinux.org/title/Picom)
+
+## Systems
+
+* [The USE Method](https://www.brendangregg.com/usemethod.html)
