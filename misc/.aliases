@@ -15,6 +15,7 @@ alias gitm='gits ; git commit -m'
 alias gitr='gits ; git rebase -i master'
 alias bkt1h='bkt --ttl=60m'
 alias bkt1m='bkt --ttl=1m'
+alias duckduckgo="cha https://html.duckduckgo.com"
 
 function jumpk8s() {
   # a busybox pod named "jump" that lives for 1 hour
@@ -349,3 +350,4 @@ thelog() {
 #     echo "wrote '$OUTPUT' to $filename"
 #   fi
 # }
+

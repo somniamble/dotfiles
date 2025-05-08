@@ -11,3 +11,33 @@ image-mode = "kitty"
 url = 'https://merveilles\.town/.*'
 cookie = "save"
 scription = "app"
+
+[[siteconf]]
+url = 'http://localhost:8384/.*'
+cookie = 'save'
+scripting = 'app'
+
+[[siteconf]]
+url = 'https://meta\.sr\.ht/.*'
+cookie = 'save'
+scripting = 'app'
+
+
+[[siteconf]]
+url = 'https://git\.sr\.ht/.*'
+cookie = 'save'
+scripting = 'app'
+
+[[siteconf]]
+url = 'https://meta\.sr\.ht/.*'
+cookie = 'save'
+scripting = 'app'
+
+[[siteconf]]
+url = 'https://sr\.ht/.*'
+cookie = 'save'
+scripting = 'app'
+
+[[siteconf]]
+url = 'https://compudanzas\.itch\.io/.*'
+scripting = 'app'
