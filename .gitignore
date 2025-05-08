@@ -17,3 +17,5 @@ config/nvim/plugin/packer_compiled.lua
 
 *.mp4
 **/atuin-receipt.json
+config/chawan/cookies.txt
+config/chawan/history.uri
